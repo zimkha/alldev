@@ -1,7 +1,9 @@
 package com.stuff.dev.alldev.services;
 
+import com.stuff.dev.alldev.entities.Messages;
 import com.stuff.dev.alldev.entities.Technology;
 import com.stuff.dev.alldev.entities.User;
+import com.stuff.dev.alldev.repositories.MessageRepository;
 import com.stuff.dev.alldev.repositories.TechnologyRepository;
 import com.stuff.dev.alldev.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +22,7 @@ public class UserServiceImpl implements UserService {
 
     private  final UserRepository userRepository;
     private  final TechnologyRepository technologyRepository;
+    private  final MessageRepository messageRepository;
 
     @Override
     public User created(User user) {
@@ -45,6 +48,11 @@ public class UserServiceImpl implements UserService {
     public Boolean deleted(Long id) {
         userRepository.deleteById(id);
         return true;
+    }
+
+    @Override
+    public Collection<Messages> listMessageByUser(int limit, Long id) {
+        return null;
     }
 
 

@@ -1,11 +1,13 @@
 package com.stuff.dev.alldev.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.stuff.dev.alldev.enums.TypeMetier;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -13,7 +15,7 @@ import java.util.List;
 @Entity
 @Data
 @AllArgsConstructor @NoArgsConstructor
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -58,7 +60,8 @@ public class User {
     @ElementCollection
     private Collection<String> links = new ArrayList<>();
 
-
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Collection<Messages> messages;
     @Override
     public  String toString() {
         return "id : " + id

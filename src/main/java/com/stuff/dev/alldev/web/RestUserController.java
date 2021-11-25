@@ -107,4 +107,18 @@ public class RestUserController {
                         .build()
         );
     }
+
+    @GetMapping("/messages-user/{id}")
+    public ResponseEntity<Response> listMessages(@PathVariable Long id) throws IOException{
+       return  ResponseEntity.ok(
+               Response.builder()
+                       .timeStamp(now())
+                       .message("List messages by user")
+                       .status(HttpStatus.CREATED)
+                       .statusCode(HttpStatus.CREATED.value())
+                       .developerMessage("List messages by one user")
+                       .data(Map.of("user", null))
+                       .build()
+       );
+    }
 }
