@@ -58,4 +58,11 @@ public class User {
     @ElementCollection
     private Collection<String> links = new ArrayList<>();
 
+
+    @Override
+    public  String toString() {
+        return "id : " + id
+                + "firstname " + firstname;
+    }
+
 }

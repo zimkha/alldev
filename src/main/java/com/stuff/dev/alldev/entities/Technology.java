@@ -29,5 +29,11 @@ public class Technology {
      @JsonIgnore
      private Collection<User> users = new ArrayList<>();
 
+     @Override
+     public  String toString() {
+          return "id : " + id
+                  + "name " + name;
+     }
+
 
 }
