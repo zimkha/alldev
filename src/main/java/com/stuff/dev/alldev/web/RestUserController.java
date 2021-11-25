@@ -117,7 +117,7 @@ public class RestUserController {
                        .status(HttpStatus.CREATED)
                        .statusCode(HttpStatus.CREATED.value())
                        .developerMessage("List messages by one user")
-                       .data(Map.of("user", null))
+                       .data(Map.of("user", userService.listMessageByUser(id)))
                        .build()
        );
     }

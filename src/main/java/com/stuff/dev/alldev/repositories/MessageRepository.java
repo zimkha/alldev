@@ -8,6 +8,6 @@ import java.util.Collection;
 
 public interface MessageRepository  extends JpaRepository<Messages, Long> {
 
-    @Query("SELECT m FROM messages WHERE m.user_id = ?1")
+    @Query("SELECT m FROM Messages m WHERE m.user = ?1")
     Collection<Messages> findByUser(Long id);
 }

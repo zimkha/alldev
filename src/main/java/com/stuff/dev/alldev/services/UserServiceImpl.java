@@ -51,8 +51,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Collection<Messages> listMessageByUser(int limit, Long id) {
-        return null;
+    public Collection<Messages> listMessageByUser(Long id) {
+        return messageRepository.findByUser(id);
     }
 
 

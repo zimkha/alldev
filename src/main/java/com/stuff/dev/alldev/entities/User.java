@@ -61,6 +61,7 @@ public class User implements Serializable {
     private Collection<String> links = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private Collection<Messages> messages;
     @Override
     public  String toString() {

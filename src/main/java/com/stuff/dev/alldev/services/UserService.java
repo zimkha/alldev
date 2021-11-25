@@ -13,5 +13,5 @@ public interface UserService {
   User get(Long id);
   User update(User user);
   Boolean deleted(Long id);
-  Collection<Messages> listMessageByUser(int limit, Long id);
+  Collection<Messages> listMessageByUser(Long id);
 }

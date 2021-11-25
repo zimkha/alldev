@@ -1,7 +1,9 @@
 package com.stuff.dev.alldev.services;
 
 import com.stuff.dev.alldev.entities.Messages;
+import com.stuff.dev.alldev.entities.User;
 import com.stuff.dev.alldev.repositories.MessageRepository;
+import com.stuff.dev.alldev.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
@@ -18,9 +20,16 @@ import java.util.Optional;
 public class MessagesServiceImpl implements MessagesService {
 
     private final MessageRepository messageRepository;
+    private final UserRepository userRepository;
     @Override
     public Messages create(Messages msg) {
-        return messageRepository.save(msg);
+        if(msg.getUser().getId() != null) {
+            User u =  userRepository.findById(msg.getUser().getId()).get();
+            msg.setUser(u);
+            return messageRepository.save(msg);
+        }
+        return null;
+
     }
 
     @Override
